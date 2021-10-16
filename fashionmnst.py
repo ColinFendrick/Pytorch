@@ -49,8 +49,8 @@ class NeuralNetwork(nn.Module):
 
 MODEL = NeuralNetwork().to(DEVICE)
 
-loss_fn = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(MODEL.parameters(), lr=1e-3)
+fashion_loss_fn = nn.CrossEntropyLoss()
+fashion_optimizer = torch.optim.SGD(MODEL.parameters(), lr=1e-3)
 
 def train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
@@ -91,6 +91,6 @@ def test(dataloader, model, loss_fn):
 epochs = 5
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
-    train(train_dataloader, MODEL, loss_fn, optimizer)
-    test(test_dataloader, MODEL, loss_fn)
+    train(train_dataloader, MODEL, fashion_loss_fn, fashion_optimizer)
+    test(test_dataloader, MODEL, fashion_loss_fn)
 print("Done!")

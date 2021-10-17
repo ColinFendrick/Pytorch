@@ -7,16 +7,16 @@ np_tensor = torch.from_numpy(np_array)
 
 print(f"{np_tensor} \n")
 
-# Shaping tenors
+# Shaping tensors
 my_shape = (2,3,)
 
 
-def generate_tensor(generator_fn, shape=my_shape):
+def generate_tensor(generator_fn=torch.rand, shape=my_shape):
     tensor = generator_fn(shape)
     print(f"Tensor from {generator_fn.__name__}: {tensor}")
     return tensor
 
-def get_tensor_attributes(tensor):
+def get_tensor_attributes(tensor=generate_tensor()):
     print(f"Shape of tensor: {tensor.shape}")
     print(f"Datatype of tensor: {tensor.dtype}")
     print(f"Device tensor is stored on: {tensor.device} \n")

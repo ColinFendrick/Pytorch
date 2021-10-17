@@ -13,6 +13,11 @@ my_shape = (2,3,)
 
 def generate_tensor(generator_fn=torch.rand, shape=my_shape):
     tensor = generator_fn(shape)
+
+    # We move our tensor to the GPU if available
+    if torch.cuda.is_available():
+        tensor = tensor.to('cuda')
+
     print(f"Tensor from {generator_fn.__name__}: {tensor}")
     return tensor
 
